@@ -1,0 +1,5 @@
+config:
+  aws:region: ap-northeast-1
+  stack:primaz: ap-northeast-1d
+  stack:subaz: ap-northeast-1c
+  stack:ami: ami-03e7796f45b4258b4

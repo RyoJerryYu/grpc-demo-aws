@@ -1,0 +1,25 @@
+---
+- name: gRPC Hello Server
+  hosts: all
+  connection: ssh
+  tasks:
+    - name: copy binary
+      copy: 
+        src: ../build/bin-linux 
+        dest: ~/helloDemo/
+        mode: 0755
+    - name: copy Dockerfile
+      copy:
+        src: ./Dockerfile
+        dest: ~/helloDemo/
+    - name: install docker
+      shell: sudo amazon-linux-extras install docker -y
+    - name: enable docker restart
+      shell: sudo systemctl enable docker
+    - name: start docker
+      shell: sudo systemctl start docker
+    - name: build image
+      shell: sudo docker build -t hello-server:v1.0.0 ~/helloDemo
+    - name: run server
+      shell: sudo docker run --restart=always -d -p 50051:50051 hello-server:v1.0.0
+
