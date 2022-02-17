@@ -291,17 +291,3 @@ const grpcListener = new aws.lb.Listener("Pulumi-grpcListener", {
         }
     ],
 })
-
-// const serverRule = new aws.lb.ListenerRule("Pulumi-ServerListenerRule", {
-//     listenerArn: grpcListener.arn,
-//     actions: [
-//         {
-//             type: "forward",
-//             targetGroupArn: serverTGroup.arn,
-//         },
-//     ],
-//     conditions: [],
-// })
-
-
-// export const grpcServerPublicIp = grpcServer.publicIp;
