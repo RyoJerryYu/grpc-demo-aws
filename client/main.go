@@ -9,7 +9,7 @@ import (
 
 	gen "github.com/RyoJerryYu/grpc-server-demo/gen/proto"
 	"google.golang.org/grpc"
-	"google.golang.org/grpc/credentials/insecure"
+	"google.golang.org/grpc/credentials"
 )
 
 const (
@@ -49,7 +49,8 @@ func callBiStream(stream gen.HelloService_StreamHelloClient) {
 
 func main() {
 	flag.Parse()
-	conn, err := grpc.Dial(*addr, grpc.WithTransportCredentials(insecure.NewCredentials()))
+	creds := credentials.NewClientTLSFromCert(nil, "")
+	conn, err := grpc.Dial(*addr, grpc.WithTransportCredentials(creds))
 	if err != nil {
 		log.Fatalf("did not connect: %v", err)
 	}

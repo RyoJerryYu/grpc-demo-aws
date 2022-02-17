@@ -3,3 +3,7 @@ config:
   stack:primaz: ap-northeast-1d
   stack:subaz: ap-northeast-1c
   stack:ami: ami-03e7796f45b4258b4
+  stack:certdomain: "*.ryo-okami.xyz"
+  stack:lblogbucket: sample-test-lb-log
+  stack:recordzone: ryo-okami.xyz
+  stack:recordname: grpc-lb
